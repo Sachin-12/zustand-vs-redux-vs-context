@@ -1,0 +1,18 @@
+@keyframes rollout {
+    0% { transform: translateY(-100px); }
+    100% { transform: none; }
+}
+
+.roll-out {
+    animation: rollout 0.4s;
+}
+
+.child {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    min-width: 250px;
+}

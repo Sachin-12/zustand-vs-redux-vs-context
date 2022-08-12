@@ -1,0 +1,8 @@
+.Parent {
+    border: 1px solid black;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    min-width: 300px;
+}
