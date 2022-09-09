@@ -1,13 +1,19 @@
 import {ListItemText, MenuItem, MenuList, Paper} from "@mui/material";
 import React from "react";
-import {BrowserRouter, Navigate, Route, Routes, useLocation, useNavigate} from "react-router-dom";
-
+import {
+  BrowserRouter,
+  Navigate,
+  Route,
+  Routes,
+  useLocation,
+  useNavigate
+} from "react-router-dom";
 import VanillaReact from "./vanillaReact/Parent";
 import "./App.css";
+import ContextComponent from "./usingContext/ContextComponent";
 
 
 const SideNavigation = () => {
-
   const navigate = useNavigate();
   const handleNavigation = (item) => {
     navigate(`/${item}`)
@@ -17,8 +23,11 @@ const SideNavigation = () => {
   return (<Paper sx={{width: "200px", border: "1px solid grey"}}>
     <MenuList>
       {stateManagementTools.map((item, index) => (<div key={index}>
-        <MenuItem selected={item.toLowerCase() === selectedPath.replace("/", "")} key={index}>
-          <ListItemText onClick={() => handleNavigation(item.toLowerCase())} primary={item}/>
+        <MenuItem
+          selected={item.toLowerCase() === selectedPath.replace("/", "")}
+          key={index}>
+          <ListItemText onClick={() => handleNavigation(item.toLowerCase())}
+                        primary={item}/>
         </MenuItem>
         {stateManagementTools.length - 1 === index ? null : <hr/>}
       </div>))}
@@ -31,6 +40,7 @@ const Topbar = ({className}) => {
 };
 
 function App() {
+  console.log("App rendered")
   return (<>
     <div className="App">
       <BrowserRouter>
@@ -42,7 +52,10 @@ function App() {
           </Routes>
           <Routes>
             <Route path={"/"} element={
-              <Navigate to={"vanilla-react"}/>}/>
+              <Navigate to={"/vanilla-react"}/>}/>
+          </Routes>
+          <Routes>
+            <Route path={"/context"} element={<ContextComponent/>}/>
           </Routes>
         </div>
       </BrowserRouter>

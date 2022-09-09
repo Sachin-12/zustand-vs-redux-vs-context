@@ -5,6 +5,7 @@ import "./Parent.css";
 import "./Child.css";
 
 const Parent = () => {
+  console.log("Vanilla react parent component")
   const [count, setCount] = useState(0);
 
   return (<div className="Parent roll-out">
