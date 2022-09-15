@@ -11,7 +11,10 @@ import {
 import VanillaReact from "./vanillaReact/Parent";
 import "./App.css";
 import ContextComponent from "./usingContext/ContextComponent";
-
+import ReduxComponent from "./usingRedux/ReduxComponent";
+import ZustandComponent from "./usingZustand/ZustandComponent";
+import JotaiComponent from "./usingJotai/JotaiComponent";
+import MobxComponent from "./usingMobx/MobxComponent";
 
 const SideNavigation = () => {
   const navigate = useNavigate();
@@ -54,14 +57,31 @@ function App() {
             <Route path={"/"} element={
               <Navigate to={"/vanilla-react"}/>}/>
           </Routes>
+
           <Routes>
             <Route path={"/context"} element={<ContextComponent/>}/>
           </Routes>
+
+          <Routes>
+            <Route path={"/redux"} element={<ReduxComponent/>}/>
+          </Routes>
+
+          <Routes>
+            <Route path={"/zustand"} element={<ZustandComponent/>}/>
+          </Routes>
+
+          <Routes>
+            <Route path={"/jotai"} element={<JotaiComponent/>}/>
+          </Routes>
+
+          {/* <Routes>
+            <Route path={"/mobx"} element={<MobxComponent/>}/>
+          </Routes> */}
+
         </div>
       </BrowserRouter>
     </div>
   </>)
-    ;
 }
 
 export default App;

@@ -1,30 +1,21 @@
 import React from 'react';
-import NormalChild from "./Child";
 import {useReactContext} from "./context";
-import {Button} from "@mui/material";
-import MemoizedChild from "./MemoizedChild";
+import ParentComponent from "../shared/ParentComponent";
+import Child from "./Child";
 
 const Parent = React.memo((props) => {
-  console.log("Parent rendered")
-  const {
-    parentRenderCount,
-    handleParentBtnClick
-  } = useReactContext()
+    console.log("ParentComponent rendered")
+    const {
+      parentRenderCount,
+      handleIncrement
+    } = useReactContext()
 
-  return (<div className="Parent roll-out">
-    <Button
-      fullWidth
-      variant="contained"
-      disableRipple
-      onClick={handleParentBtnClick}
-    >
-      Increment Count
-    </Button>
-    <h3 className={"roll-out"}>Parent Render Count {parentRenderCount}</h3>
-    <NormalChild/>
-    <br/>
-    <MemoizedChild/>
-  </div>);
-})
+    return (
+      <ParentComponent handleIncrement={handleIncrement}>
+        <Child/>
+      </ParentComponent>
+    );
 
+  }
+)
 export default Parent;

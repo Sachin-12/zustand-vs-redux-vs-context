@@ -1,17 +1,43 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import {Button} from "@mui/material";
-import useStore from "./store";
-import Child from "./Child";
 import {DisplayRenderTime} from "../vanillaReact/Child";
 
-const Parent = React.memo(() => {
-  console.log("Parent rendered");
-  const {count, increase, decrease} = useStore(state => state)
+const ParentComponent = ({
+                           children, handleIncrement
+                         }) => {
+  console.log("ParentComponent rendered");
+
+  const renderCount = ++useRef(0).current;
   return (<div className="Parent roll-out">
+    <Button
+      variant="contained"
+      disableRipple
+      onClick={handleIncrement}
+    >
+      Change State
+    </Button>
+
+    <br/>
+    <p>Parent Render Count: {renderCount}</p>
+    <DisplayRenderTime/>
+    {children}
+  </div>)
+}
+
+export default ParentComponent;
+
+
+const MemoizedParentComponent = React.memo(({
+                                              children,
+                                              handleIncrement,
+                                              handleDecrement
+                                            }) => {
+    console.log("Memoized ParentComponent rendered");
+    return (<div className="Parent roll-out">
       <Button
         variant="contained"
         disableRipple
-        onClick={increase}
+        onClick={handleIncrement}
       >
         Increment Count
       </Button>
@@ -20,14 +46,13 @@ const Parent = React.memo(() => {
       <Button
         variant="contained"
         disableRipple
-        onClick={decrease}
+        onClick={handleDecrement}
       >
         Decrement Count
       </Button>
       <DisplayRenderTime/>
-      <Child/>
-    </div>
-  )
-})
-
-export default Parent;
+      {children}
+    </div>)
+  }
+)
+export {MemoizedParentComponent}

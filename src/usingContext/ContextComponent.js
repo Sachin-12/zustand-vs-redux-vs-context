@@ -1,31 +1,15 @@
-import ContextProvider from "./provider"
-
-import React, {useState} from 'react';
+import React from 'react';
 import Parent from "./Parent";
-import {Button} from "@mui/material";
+import StateComponent from "../shared/StateComponent";
+import Provider from "./provider";
 
 const ContextComponent = () => {
-  console.log("Parent to Context Provider is rendered")
-  const [dummyState, setDummyState] = useState(0)
-  const handleClick = () => {
-    setDummyState(dummyState + 1)
-  }
   return (
-    <div style={{
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      justifyContent: 'center'
-    }}>
-      <h3>Parent to Context Provider.</h3>
-      <Button disableRipple onClick={handleClick} variant={"contained"}>Click
-        Me </Button>
-      <br/>
-      <br/>
-      <ContextProvider>
+    <StateComponent title={"Parent to Context"}>
+      <Provider>
         <Parent/>
-      </ContextProvider>
-    </div>
+      </Provider>
+    </StateComponent>
   );
 };
 

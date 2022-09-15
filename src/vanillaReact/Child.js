@@ -4,7 +4,8 @@ import {Paper} from "@mui/material";
 
 const MemoizedChild = React.memo((props) => <Child {...props}/>)
 
-export function getP(currentDate) {
+export function DisplayRenderTime() {
+  const currentDate = new Date();
   return <p>{`Last Rendered at ${currentDate.getHours()}h : ${currentDate.getMinutes()}m 
       : ${currentDate.getSeconds()}s : ${currentDate.getMilliseconds()}ms`}</p>;
 }
@@ -20,7 +21,7 @@ const Child = ({childType}) => {
   return (
     <Paper className="roll-out child" elevation={3}>
       <p>{childType}</p>
-      {getP(currentDate)}
+      <DisplayRenderTime/>
     </Paper>
   )
 }

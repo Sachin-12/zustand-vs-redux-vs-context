@@ -1,4 +1,4 @@
-import {useCallback, useMemo, useState} from "react";
+import React, {useCallback, useMemo, useState} from "react";
 import {initialReactContext, ReactContext} from "./context";
 
 const Provider = ({children}) => {
@@ -6,7 +6,7 @@ const Provider = ({children}) => {
 
   const [childRenderCount] = useState(initialReactContext.childRenderCount);
 
-  const handleParentBtnClick = useCallback(
+  const handleIncrement = useCallback(
     () => {
       setParentRenderCount((parentRenderCount) => parentRenderCount + 1);
     },
@@ -15,9 +15,9 @@ const Provider = ({children}) => {
 
   const contextValue = useMemo(() => ({
     parentRenderCount: parentRenderCount,
-    handleParentBtnClick: handleParentBtnClick,
+    handleIncrement: handleIncrement,
     childRenderCount: childRenderCount
-  }), [parentRenderCount, handleParentBtnClick, childRenderCount]);
+  }), [parentRenderCount, handleIncrement, childRenderCount]);
 
   return (<ReactContext.Provider
     value={contextValue}

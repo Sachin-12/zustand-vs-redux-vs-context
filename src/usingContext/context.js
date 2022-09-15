@@ -3,7 +3,7 @@ import {createContext, useContext} from "react";
 export const initialReactContext = {
   parentRenderCount: 0,
   childRenderCount: 0,
-  handleParentBtnClick: () => {
+  handleIncrement: () => {
   },
 };
 

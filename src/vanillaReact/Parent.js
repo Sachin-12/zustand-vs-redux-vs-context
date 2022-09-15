@@ -1,7 +1,7 @@
 import {Child, MemoizedChild} from "./Child";
 import {Button} from "@mui/material";
 import React, {useState} from "react";
-import "./Parent.css";
+import "../App.css";
 import "./Child.css";
 
 const Parent = () => {
@@ -17,7 +17,7 @@ const Parent = () => {
     >
       Increment Count
     </Button>
-    <h3 className={"roll-out"}>Parent Render Count {count}</h3>
+    <h3 className={"roll-out"}>ParentComponent Render Count {count}</h3>
     <Child childType="Normal Child"/>
     <br/>
     <MemoizedChild childType="Memoized Child"/>
