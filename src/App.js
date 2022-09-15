@@ -21,7 +21,7 @@ const SideNavigation = () => {
   const handleNavigation = (item) => {
     navigate(`/${item}`)
   }
-  const stateManagementTools = ["Context", "Redux", "Zustand", "Jotai", "Mobx", "Valatio", "Recoil", "Vanilla-React"];
+  const stateManagementTools = ["Context", "Redux", "Zustand", "Jotai", "Vanilla-React"];
   const selectedPath = useLocation()?.pathname;
   return (<Paper sx={{width: "200px", border: "1px solid grey"}}>
     <MenuList>
